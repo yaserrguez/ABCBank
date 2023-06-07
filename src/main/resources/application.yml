@@ -1,0 +1,21 @@
+app:
+  version: 1.0.0
+
+server:
+  servlet:
+    context-path: /abc_bank_service/v1
+  port: 8090
+
+spring:
+  application:
+    name: ABCBank
+  profiles:
+    active: test
+
+#  cache:
+#    jcache:
+#      config: classpath:ehcache.xml
+#    ehcache:
+#      config: ehcache.xml
+
+
