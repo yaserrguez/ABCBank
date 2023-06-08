@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
@@ -32,9 +32,9 @@ public class PhotoEntity implements Serializable
     @Column(name = "PHOTO", columnDefinition = "blob", length = 4000)
     private byte[] photo;
 
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true )
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn ( name = "contact_id" )
+//    @JoinColumn ( name = "CONTACT_ID" )
     private ContactEntity contact;
 
 }

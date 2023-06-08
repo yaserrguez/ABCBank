@@ -1,24 +1,29 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.dto;
 
+import ABCBankService.com.group.bestvision.yrm.test.controller.ContactController;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Data
 @EqualsAndHashCode
@@ -28,7 +33,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @Schema(name = "Contact")
-public class ContactDto implements Serializable
+public class ContactDto extends EntityModel<ContactDto> implements Serializable
 {
 
     private static final long serialVersionUID = -5505972669439664181L;
@@ -53,8 +58,8 @@ public class ContactDto implements Serializable
 
     @Schema(name = "dateOfBirth", description = "Date Of Birth")
     @JsonProperty("dateOfBirth")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime dateOfBirth;
+//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Timestamp dateOfBirth;
 
     @Schema(name = "phones", description = "Phones")
     @JsonProperty("phones")
@@ -68,4 +73,35 @@ public class ContactDto implements Serializable
     @Schema(name = "photo", description = "Photo")
     @JsonProperty("photo")
     private PhotoDto photo;
+
+    public void addLinks(Boolean replaceInfo)
+    {
+        Link link = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).findById(this.getId()))
+                .withSelfRel();
+        this.add(link);
+
+        Link link2 = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).getAddress(this.getId()))
+                .withRel("address");
+        this.add(link2);
+
+        Link link3 = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).getPhoto(this.getId()))
+                .withRel("photo");
+        this.add(link3);
+
+        Link link4 = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).getPhones(this.getId()))
+                .withRel("phones");
+        this.add(link4);
+
+        if (replaceInfo)
+        {
+            this.setAddress(null);
+            this.setPhoto(null);
+            this.setPhones(null);
+        }
+    }
+
+    public void addLinks()
+    {
+        this.addLinks(Boolean.TRUE);
+    }
 }

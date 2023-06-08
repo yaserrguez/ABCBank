@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022-2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
@@ -42,7 +42,7 @@ public class AuditableEntity implements Serializable
 
     @CreatedBy
     @Column(name = "CREATED_BY", nullable = false, updatable = false, columnDefinition = "varchar(50)")
-    private String createdBy;
+    private String createdBy = "-";
 
     @LastModifiedBy
     @Column(name = "LAST_MODIFIED_BY", nullable = false, columnDefinition = "varchar(50)")

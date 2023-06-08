@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,15 +40,15 @@ public class ContactEntity extends AuditableEntity implements Serializable
     private String secondName;
 
     @Column (name = "DATE_OF_BIRTH", nullable = false)
-    private LocalDateTime dateOfBirth;
+    private Timestamp dateOfBirth;
 
     @OneToMany(mappedBy = "contact", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PhoneEntity> phones = new ArrayList<>();
 
     @OneToOne(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private AddressEntity addressEntity;
+    private AddressEntity address;
 
     @OneToOne(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private PhotoEntity photoEntity;
+    private PhotoEntity photo;
 
 }

@@ -1,14 +1,17 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.controller.impl;
 
 import ABCBankService.com.group.bestvision.yrm.test.controller.ContactController;
+import ABCBankService.com.group.bestvision.yrm.test.dto.AddressDto;
 import ABCBankService.com.group.bestvision.yrm.test.dto.ContactDto;
+import ABCBankService.com.group.bestvision.yrm.test.dto.PhoneDto;
+import ABCBankService.com.group.bestvision.yrm.test.dto.PhotoDto;
 import ABCBankService.com.group.bestvision.yrm.test.mapper.ContactMapper;
 import ABCBankService.com.group.bestvision.yrm.test.service.impl.ContactServiceImpl;
 import org.springframework.data.domain.Page;
@@ -19,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/contacts")
 @RestController
@@ -60,7 +64,7 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ResponseEntity<ContactDto>> save(@RequestBody ContactDto contact)
+    public ResponseEntity<ContactDto> save(@RequestBody ContactDto contact)
     {
         ContactDto newContact = contactService.save(contact);
         return createdResponse(newContact);
@@ -79,5 +83,29 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     public void delete(@PathVariable("id") long id)
     {
         contactService.deleteById(id);
+    }
+
+    @Override
+    @GetMapping(value = "/{id}/photo", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PhotoDto> getPhoto(@PathVariable("id") long id)
+    {
+        Optional<PhotoDto> photo = contactService.getPhotoById(id);
+        return photo.isPresent() ? okResponse(photo.get()) : noContentResponse();
+    }
+
+    @Override
+    @GetMapping(value = "/{id}/address", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AddressDto> getAddress(@PathVariable("id") long id)
+    {
+        Optional<AddressDto> address = contactService.getAddressById(id);
+        return address.isPresent() ? okResponse(address.get()) : noContentResponse();
+    }
+
+    @Override
+    @GetMapping(value = "/{id}/phones", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<PhoneDto>> getPhones(@PathVariable("id") long id)
+    {
+        Optional<List<PhoneDto>> phones = contactService.getPhonesById(id);
+        return phones.isPresent() ? okResponse(phones.get()) : noContentResponse();
     }
 }

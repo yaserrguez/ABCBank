@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022-2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
@@ -61,9 +61,9 @@ public class AddressEntity implements Serializable
     @Column(name = "CONTRY", length = 50, columnDefinition = "varchar(50)")
     private String contry;
 
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true )
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn ( name = "contact_id" )
+    //@JoinColumn ( name = "CONTACT_ID" )
     private ContactEntity contact;
 
 }

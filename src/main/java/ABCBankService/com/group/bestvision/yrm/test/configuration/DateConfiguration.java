@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
@@ -20,24 +20,24 @@ public class DateConfiguration
 {
 
 	 private static final String dateFormat = "dd/MM/yyyy";
-	 
+
 	 private static final String dateTimeFormat = "dd/MM/yyyy HH:mm:ss";
-	 
+
 	 @Bean
 	 public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer()
 	 {
-		 
+
 	    return builder -> {
-	    	
+
 	        builder.simpleDateFormat(dateTimeFormat);
-	        
+
 	        builder.serializers(new LocalDateSerializer(DateTimeFormatter.ofPattern(dateFormat)));
-	        
+
 	        builder.serializers(new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(dateTimeFormat)));
-	        
+
 	    };
-	    
+
 	 }
-	    
+
 }
 

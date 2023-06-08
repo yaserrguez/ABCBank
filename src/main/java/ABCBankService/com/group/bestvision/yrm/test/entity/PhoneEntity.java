@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/7/23, 11:47 PM
  *
  */
 
@@ -29,6 +29,7 @@ public class PhoneEntity implements Serializable
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false, updatable = false, columnDefinition = "number(19)")
     private Long id;
+
 
     @Column(name = "NUMBER", columnDefinition = "varchar(12)")
     private String number;
