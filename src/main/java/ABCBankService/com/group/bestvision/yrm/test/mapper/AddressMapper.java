@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -13,4 +13,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface AddressMapper extends EntityMapper<AddressDto, AddressEntity>
-{}
+{
+
+}

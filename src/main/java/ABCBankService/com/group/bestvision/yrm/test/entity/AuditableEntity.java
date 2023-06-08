@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022-2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 1:04 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -40,7 +40,7 @@ public class AuditableEntity implements Serializable
 
     @Version
     @Column(name = "VERSION", columnDefinition = "number(19)")
-    private Long version = 0L;
+    private Long version;
 
     @Column(name="ENABLED", columnDefinition = "number(19)")
     private Boolean enabled = Boolean.TRUE;

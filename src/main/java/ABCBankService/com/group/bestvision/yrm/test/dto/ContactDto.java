@@ -1,13 +1,14 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 1:04 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.dto;
 
 import ABCBankService.com.group.bestvision.yrm.test.controller.impl.ContactControllerImpl;
+import ABCBankService.com.group.bestvision.yrm.test.entity.AddressEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,7 +36,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Schema(name = "Contact")
 public class ContactDto extends EntityModel<ContactDto> implements Serializable
 {
-
     private static final long serialVersionUID = -5505972669439664181L;
 
     @Schema(name = "id", description = "Id")
@@ -66,9 +66,13 @@ public class ContactDto extends EntityModel<ContactDto> implements Serializable
 //    private Set<PhoneDto> phones = new HashSet<>();
     private List<PhoneDto> phones = new ArrayList<>();
 
-    @Schema(name = "address", description = "Address")
-    @JsonProperty("address")
-    private AddressDto address;
+//    @Schema(name = "address", description = "Address")
+//    @JsonProperty("address")
+//    private AddressDto address;
+
+    @Schema(name = "addresses", description = "Addresses")
+    @JsonProperty("addresses")
+    private List<AddressEntity> addresses = new ArrayList<>();
 
     @Schema(name = "photo", description = "Photo")
     @JsonProperty("photo")
@@ -81,7 +85,7 @@ public class ContactDto extends EntityModel<ContactDto> implements Serializable
         this.add(link);
 
         Link link2 = WebMvcLinkBuilder.linkTo(methodOn(ContactControllerImpl.class).getAddress(this.getId()))
-                .withRel("address");
+                .withRel("addresses");
         this.add(link2);
 
         Link link3 = WebMvcLinkBuilder.linkTo(methodOn(ContactControllerImpl.class).getPhoto(this.getId()))
@@ -94,7 +98,7 @@ public class ContactDto extends EntityModel<ContactDto> implements Serializable
 
         if (replaceInfo)
         {
-            this.setAddress(null);
+            this.setAddresses(null);
             this.setPhoto(null);
             this.setPhones(null);
         }

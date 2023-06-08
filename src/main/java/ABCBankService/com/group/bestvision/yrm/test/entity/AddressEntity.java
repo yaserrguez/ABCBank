@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022-2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -27,6 +27,8 @@ public class AddressEntity implements Serializable
     private static final long serialVersionUID = -7256231143878909960L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false, updatable = false, columnDefinition = "number(19)")
     private Long id;
 
     @Size(max = 50, message = "'street' no válido (entre 2 y 50 caracteres)")
@@ -61,9 +63,7 @@ public class AddressEntity implements Serializable
     @Column(name = "CONTRY", length = 50, columnDefinition = "varchar(50)")
     private String contry;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    //@JoinColumn ( name = "CONTACT_ID" )
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = ContactEntity.class)
+    @JoinColumn(name = "CONTACT_ID", referencedColumnName = "ID")
     private ContactEntity contact;
-
 }

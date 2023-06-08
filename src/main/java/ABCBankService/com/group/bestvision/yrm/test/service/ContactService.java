@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 1:04 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -27,7 +27,7 @@ public interface ContactService
 
     Optional<PhotoDto> getPhotoById(long id);
 
-    Optional<AddressDto> getAddressById(long id);
+    Optional<List<AddressDto>> getAddressById(long id);
 
     Optional<List<PhoneDto>> getPhonesById(long id);
 }

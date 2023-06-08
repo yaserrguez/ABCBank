@@ -1,0 +1,13 @@
+${AnsiStyle.BOLD}
+${AnsiColor.RED} ********************************************
+${AnsiColor.BLUE}     _    ____   ____ ____              _
+${AnsiColor.BLUE}    / \  | __ ) / ___| __ )  __ _ _ __ | | __
+${AnsiColor.BLUE}   / _ \ |  _ \| |   |  _ \ / _` | '_ \| |/ /
+${AnsiColor.BLUE}  / ___ \| |_) | |___| |_) | (_| | | | |   <
+${AnsiColor.BLUE} /_/   \_\____/ \____|____/ \__,_|_| |_|_|\_\
+${AnsiColor.BLUE} --------------------------------------------
+${AnsiColor.BLUE}                   v 1.0.0
+${AnsiColor.BLUE} --------------------------------------------
+${AnsiColor.MAGENTA} <server>:${server.port}${server.servlet.context-path}
+${AnsiColor.RED} ********************************************
+${AnsiStyle.NORMAL}

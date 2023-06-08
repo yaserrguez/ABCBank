@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 1:04 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -104,13 +104,13 @@ public interface ContactController
     )
     ResponseEntity<PhotoDto> getPhoto(@PathVariable("id") long id);
 
-    @Operation(description = "Direccion del Contacto",
+    @Operation(description = "Direcciones del Contacto",
             parameters = {
                     @Parameter(name = "id", description = "Identificador del Contacto")
             },
             responses = {
                     @ApiResponse(responseCode = "201", description = "La operación se ha realizado con exito",
-                            content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE), @Content(schema = @Schema(name = "AddressDto"))}),
+                            content = @Content(array = @ArraySchema(schema = @Schema(name = "AddressDto")))),
                     @ApiResponse(responseCode = "500", description = "Errores del servidor")
             }
     )

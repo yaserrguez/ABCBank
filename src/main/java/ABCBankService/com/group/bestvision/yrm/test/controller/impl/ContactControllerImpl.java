@@ -1,21 +1,20 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.controller.impl;
 
 import ABCBankService.com.group.bestvision.yrm.test.controller.ContactController;
-import ABCBankService.com.group.bestvision.yrm.test.dto.AddressDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.ContactDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.PhoneDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.PhotoDto;
+import ABCBankService.com.group.bestvision.yrm.test.dto.*;
 import ABCBankService.com.group.bestvision.yrm.test.mapper.ContactMapper;
 import ABCBankService.com.group.bestvision.yrm.test.service.impl.ContactServiceImpl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -42,22 +41,36 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     public ResponseEntity<ContactDto> findById(@PathVariable("id") long id)
     {
         ContactDto contact = contactService.findById(id);
+        contact.addLinks(Boolean.FALSE);
         return okResponse(contact);
     }
 
     @Override
     @GetMapping
-    public ResponseEntity<List<ContactDto>> list()
+    public ResponseEntity<List<ContactDto>> list(@RequestParam(name = "name", required = false) String name,
+                                                 @RequestParam(name = "address", required = false) String address)
     {
-        List<ContactDto> contactList = contactService.findAll();
+        ContactSearchFilterDto filter = ContactSearchFilterDto.builder()
+                .name(name)
+                .address(address)
+                .build();
+        List<ContactDto> contactList = contactService.findAll(filter);
+        contactList.forEach(x -> x.addLinks(Boolean.FALSE));
         return okResponse(contactList);
     }
 
     @Override
     @GetMapping("/page-query")
-    public ResponseEntity<Page<ContactDto>> pageQuery(Pageable pageable)
+    public ResponseEntity<Page<ContactDto>> pageQuery(@RequestParam(name = "name", required = false) String name,
+                                                      @RequestParam(name = "address", required = false) String address,
+                                                      @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable)
     {
-        Page<ContactDto> contactPage = contactService.findAll(pageable);
+        ContactSearchFilterDto filter = ContactSearchFilterDto.builder()
+                .name(name)
+                .address(address)
+                .build();
+        Page<ContactDto> contactPage = contactService.findAll(filter, pageable);
+        contactPage.getContent().forEach(x -> x.addLinks(Boolean.FALSE));
         return okResponse(contactPage);
     }
 
@@ -67,6 +80,7 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     public ResponseEntity<ContactDto> save(@RequestBody ContactDto contact)
     {
         ContactDto newContact = contactService.save(contact);
+        newContact.addLinks(Boolean.FALSE);
         return createdResponse(newContact);
     }
 
@@ -75,6 +89,7 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     public ResponseEntity<ContactDto> update(@RequestBody ContactDto contact, @PathVariable("id") long id)
     {
         ContactDto upContact = contactService.update(contact, id);
+        upContact.addLinks(Boolean.FALSE);
         return okResponse(upContact);
     }
 
@@ -94,10 +109,10 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     }
 
     @Override
-    @GetMapping(value = "/{id}/address", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}/addresses", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AddressDto> getAddress(@PathVariable("id") long id)
     {
-        Optional<AddressDto> address = contactService.getAddressById(id);
+        Optional<List<AddressDto>> address = contactService.getAddressById(id);
         return address.isPresent() ? okResponse(address.get()) : noContentResponse();
     }
 

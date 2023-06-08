@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -25,11 +25,11 @@ import java.io.Serializable;
 public class PhoneEntity implements Serializable
 {
     private static final long serialVersionUID = 4579363460886075036L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false, updatable = false, columnDefinition = "number(19)")
     private Long id;
-
 
     @Column(name = "NUMBER", columnDefinition = "varchar(12)")
     private String number;

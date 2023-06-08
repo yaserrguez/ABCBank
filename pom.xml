@@ -2,7 +2,7 @@
 <!--
   ~ Copyright (c) 2023.  Yaser Rodriguez
   ~ yaser.rguez@gmail.com
-  ~ LastUpdate: 6/8/23, 1:04 PM
+  ~ LastUpdate: 6/8/23, 3:03 PM
   ~
   -->
 
@@ -18,7 +18,7 @@
 
     <groupId>com.group.bestvision.yrm.test</groupId>
     <artifactId>ABCBank</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>ABCBank</name>
     <description>ABC Bank Test</description>
 
@@ -110,11 +110,11 @@
             <version>${org.projectlombok.version}</version>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-mapstruct-binding</artifactId>
-            <version>${org.projectlombok.mapstruct.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.projectlombok</groupId>-->
+<!--            <artifactId>lombok-mapstruct-binding</artifactId>-->
+<!--            <version>${org.projectlombok.mapstruct.version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.mapstruct</groupId>

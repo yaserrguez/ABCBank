@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 1:04 PM
+ * LastUpdate: 6/8/23, 3:03 PM
  *
  */
 
@@ -101,6 +101,11 @@ public class ContactServiceImpl implements ContactService
         try
         {
             ContactEntity entity = contactMapper.toEntity(contactDto);
+            if (entity.getPhoto() != null)
+            {
+                entity.getPhoto().setContact(entity);
+            }
+            entity.getAddresses().forEach(x -> x.setContact(entity));
             entity.getPhones().forEach(x -> x.setContact(entity));
             return contactMapper.toDto(repository.save(entity));
         }
@@ -121,7 +126,6 @@ public class ContactServiceImpl implements ContactService
                 throw new ResourceNotFoundException(String.format("Contacto '%s' no encontrado", id));
             }
 
-            ContactEntity newData = contactMapper.toEntity(contactDto);
             return save(contactDto);
         }
         catch (Exception e)
@@ -164,16 +168,16 @@ public class ContactServiceImpl implements ContactService
     }
 
     @Override
-    public Optional<AddressDto> getAddressById(long id)
+    public Optional<List<AddressDto>> getAddressById(long id)
     {
         try
         {
             ContactEntity contact = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Contacto con id '%s' no encontrado", id)));
-            if (contact == null || contact.getAddress() == null)
+            if (contact == null || contact.getAddresses() == null || contact.getAddresses().isEmpty())
             {
                 return Optional.empty();
             }
-            return Optional.of(addressMapper.toDto(contact.getAddress()));
+            return Optional.of(addressMapper.toDto(contact.getAddresses()));
         }
         catch (Exception e)
         {
