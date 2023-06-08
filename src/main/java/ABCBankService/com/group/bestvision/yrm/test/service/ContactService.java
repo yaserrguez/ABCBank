@@ -1,16 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.service;
 
-import ABCBankService.com.group.bestvision.yrm.test.dto.AddressDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.ContactDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.PhoneDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.PhotoDto;
+import ABCBankService.com.group.bestvision.yrm.test.dto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,9 +18,9 @@ public interface ContactService
 {
     ContactDto findById(long id);
 
-    List<ContactDto> findAll();
+    List<ContactDto> findAll(ContactSearchFilterDto filter);
 
-    Page<ContactDto> findAll(Pageable pageable);
+    Page<ContactDto> findAll(ContactSearchFilterDto filter, Pageable pageable);
     ContactDto save(ContactDto dto);
     ContactDto update(ContactDto entity, long id);
     void deleteById(long id);

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
@@ -34,11 +34,11 @@ public class PhotoDto implements Serializable
     @JsonProperty("id")
     private Long id;
 
-    @Schema(name = "version", description = "Version")
-    @JsonProperty("version")
-    private Long version;
+//    @Schema(name = "photo", description = "Photo")
+//    @JsonProperty("photo")
+//    private byte[] photo;
 
-    @Schema(name = "photo", description = "Photo")
-    @JsonProperty("photo")
-    private byte[] photo;
+    @Schema(name = "url", description = "URL")
+    @JsonProperty("url")
+    private String url;
 }

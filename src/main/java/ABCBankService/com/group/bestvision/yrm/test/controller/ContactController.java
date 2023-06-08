@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
@@ -48,7 +48,7 @@ public interface ContactController
                     @ApiResponse(responseCode = "500", description = "Errores del servidor")
             }
     )
-    ResponseEntity<List<ContactDto>> list();
+    ResponseEntity<List<ContactDto>> list(String name, String address);
 
     @Operation(description = "Recuperar todos los Contactos con paginado",
             responses = {
@@ -57,7 +57,7 @@ public interface ContactController
                     @ApiResponse(responseCode = "500", description = "Errores del servidor")
             }
     )
-    ResponseEntity<Page<ContactDto>> pageQuery(Pageable pageable);
+    ResponseEntity<Page<ContactDto>> pageQuery(String name, String address,Pageable pageable);
 
     @Operation(description = "Crear Contacto",
             responses = {

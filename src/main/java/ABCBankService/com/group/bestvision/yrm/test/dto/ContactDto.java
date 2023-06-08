@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.dto;
 
-import ABCBankService.com.group.bestvision.yrm.test.controller.ContactController;
+import ABCBankService.com.group.bestvision.yrm.test.controller.impl.ContactControllerImpl;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -76,19 +76,19 @@ public class ContactDto extends EntityModel<ContactDto> implements Serializable
 
     public void addLinks(Boolean replaceInfo)
     {
-        Link link = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).findById(this.getId()))
+        Link link = WebMvcLinkBuilder.linkTo(methodOn(ContactControllerImpl.class).findById(this.getId()))
                 .withSelfRel();
         this.add(link);
 
-        Link link2 = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).getAddress(this.getId()))
+        Link link2 = WebMvcLinkBuilder.linkTo(methodOn(ContactControllerImpl.class).getAddress(this.getId()))
                 .withRel("address");
         this.add(link2);
 
-        Link link3 = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).getPhoto(this.getId()))
+        Link link3 = WebMvcLinkBuilder.linkTo(methodOn(ContactControllerImpl.class).getPhoto(this.getId()))
                 .withRel("photo");
         this.add(link3);
 
-        Link link4 = WebMvcLinkBuilder.linkTo(methodOn(ContactController.class).getPhones(this.getId()))
+        Link link4 = WebMvcLinkBuilder.linkTo(methodOn(ContactControllerImpl.class).getPhones(this.getId()))
                 .withRel("phones");
         this.add(link4);
 

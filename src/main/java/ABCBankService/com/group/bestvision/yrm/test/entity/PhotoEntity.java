@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
@@ -29,8 +29,11 @@ public class PhotoEntity implements Serializable
     @Id
     private Long id;
 
-    @Column(name = "PHOTO", columnDefinition = "blob", length = 4000)
-    private byte[] photo;
+//    @Column(name = "PHOTO", columnDefinition = "blob", length = 4000)
+//    private byte[] photo;
+
+    @Column(name = "URL", length = 200, columnDefinition = "varchar(200)")
+    private String url;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId

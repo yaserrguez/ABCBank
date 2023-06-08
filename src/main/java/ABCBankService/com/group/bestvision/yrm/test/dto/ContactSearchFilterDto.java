@@ -11,32 +11,30 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
+@EqualsAndHashCode
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-@Schema(name = "Phone")
-public class PhoneDto implements Serializable
+@Schema(name = "ContactSearchFilter")
+public class ContactSearchFilterDto implements Serializable
 {
+    private static final long serialVersionUID = 7470391610399516675L;
 
-    private static final long serialVersionUID = 884675642642160354L;
+    @Schema(name = "name", description = "Name")
+    @JsonProperty("name")
+    @Size(max = 50)
+    private String name;
 
-    @Schema(name = "id", description = "Id")
-    @JsonProperty("id")
-    private Long id;
-
-    @Schema(name = "number", description = "Number")
-    @JsonProperty("number")
-    @Size(max = 12)
-    private String number;
+    @Schema(name = "address", description = "Address")
+    @JsonProperty("address")
+    @Size(max = 50)
+    private String address;
 }

@@ -1,16 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.service.impl;
 
-import ABCBankService.com.group.bestvision.yrm.test.dto.AddressDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.ContactDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.PhoneDto;
-import ABCBankService.com.group.bestvision.yrm.test.dto.PhotoDto;
+import ABCBankService.com.group.bestvision.yrm.test.dto.*;
 import ABCBankService.com.group.bestvision.yrm.test.entity.ContactEntity;
 import ABCBankService.com.group.bestvision.yrm.test.exception.ResourceNotFoundException;
 import ABCBankService.com.group.bestvision.yrm.test.mapper.AddressMapper;
@@ -19,11 +16,13 @@ import ABCBankService.com.group.bestvision.yrm.test.mapper.PhoneMapper;
 import ABCBankService.com.group.bestvision.yrm.test.mapper.PhotoMapper;
 import ABCBankService.com.group.bestvision.yrm.test.repository.ContactRepository;
 import ABCBankService.com.group.bestvision.yrm.test.service.ContactService;
+import ABCBankService.com.group.bestvision.yrm.test.specification.ContactSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -64,11 +63,14 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
-    public List<ContactDto> findAll()
+    public List<ContactDto> findAll(ContactSearchFilterDto filter)
     {
         try
         {
-            return contactMapper.toDto(repository.findAll());
+            Specification<ContactEntity> specification = ContactSpecification.searchFilterSpecification(filter);
+
+            List<ContactEntity> entityList = (specification == null)? repository.findAll() : repository.findAll(specification);
+            return contactMapper.toDto(entityList);
         }
         catch (Exception e)
         {
@@ -77,25 +79,13 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
-    public Page<ContactDto> findAll(Pageable pageable)
+    public Page<ContactDto> findAll(ContactSearchFilterDto filter, Pageable pageable)
     {
         try
         {
-            Page<ContactEntity> entityPage = repository.findAll(pageable);
-            return new PageImpl<>(contactMapper.toDto(entityPage.getContent()), pageable, entityPage.getTotalElements());
-        }
-        catch (Exception e)
-        {
-            log.error(e.getMessage());
-            throw e;
-        }
-    }
+            Specification<ContactEntity> specification = ContactSpecification.searchFilterSpecification(filter);
 
-    public Page<ContactDto> findByCondition(ContactDto contactDto, Pageable pageable)
-    {
-        try
-        {
-            Page<ContactEntity> entityPage = repository.findAll(pageable);
+            Page<ContactEntity> entityPage = (specification == null)? repository.findAll(pageable) : repository.findAll(specification, pageable);
             List<ContactEntity> entities = entityPage.getContent();
             return new PageImpl<>(contactMapper.toDto(entities), pageable, entityPage.getTotalElements());
         }
@@ -160,7 +150,7 @@ public class ContactServiceImpl implements ContactService
         try
         {
             ContactEntity contact = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(String.format("Contacto con id '%s' no encontrado", id)));
-            if (contact == null || contact.getPhoto() == null || contact.getPhoto().getPhoto() == null)
+            if (contact == null || contact.getPhoto() == null || contact.getPhoto().getUrl() == null)
             {
                 return Optional.empty();
             }

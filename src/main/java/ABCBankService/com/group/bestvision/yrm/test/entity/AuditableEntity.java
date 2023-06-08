@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022-2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 11:47 PM
+ * LastUpdate: 6/8/23, 1:04 PM
  *
  */
 
@@ -11,9 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -39,14 +37,6 @@ public class AuditableEntity implements Serializable
     @LastModifiedDate
     @Column(name = "LAST_MODIFIED_DATE", nullable = false, columnDefinition = "timestamp(6)")
     private Timestamp lastModifiedDate;
-
-    @CreatedBy
-    @Column(name = "CREATED_BY", nullable = false, updatable = false, columnDefinition = "varchar(50)")
-    private String createdBy = "-";
-
-    @LastModifiedBy
-    @Column(name = "LAST_MODIFIED_BY", nullable = false, columnDefinition = "varchar(50)")
-    private String lastModifiedBy;
 
     @Version
     @Column(name = "VERSION", columnDefinition = "number(19)")
