@@ -1,16 +1,15 @@
 /*
- * Copyright (c) 2022. DATYS, Tecnología y Servicios.
- * SRNT Sistema de Registro Nacional de Tramites
- * Todos los derechos reservados.
- * www.datys.co.cu
- *
- * LastUpdate: 3/29/22, 12:24 PM.
+ * Copyright (c) 2022-2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -28,8 +27,6 @@ public class AddressEntity implements Serializable
     private static final long serialVersionUID = -7256231143878909960L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "ID", nullable = false, updatable = false, columnDefinition = "number(19)")
     private Long id;
 
     @Size(max = 50, message = "'street' no válido (entre 2 y 50 caracteres)")

@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
+ *
+ */
+
 package ABCBankService.com.group.bestvision.yrm.test.configuration;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;

@@ -1,9 +1,15 @@
+/*
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
+ *
+ */
+
 package ABCBankService.com.group.bestvision.yrm.test.entity;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -11,7 +17,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@EqualsAndHashCode
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +25,6 @@ import java.io.Serializable;
 public class PhoneEntity implements Serializable
 {
     private static final long serialVersionUID = 4579363460886075036L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false, updatable = false, columnDefinition = "number(19)")

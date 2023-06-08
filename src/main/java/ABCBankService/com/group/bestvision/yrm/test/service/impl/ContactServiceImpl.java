@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
+ *
+ */
+
 package ABCBankService.com.group.bestvision.yrm.test.service.impl;
 
 import ABCBankService.com.group.bestvision.yrm.test.dto.ContactDto;
@@ -15,7 +22,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service

@@ -1,10 +1,7 @@
 /*
- * Copyright (c) 2022. DATYS, Tecnología y Servicios.
- * SRNT Sistema de Registro Nacional de Tramites
- * Todos los derechos reservados.
- * www.datys.co.cu
- *
- * LastUpdate: 5/27/22, 10:38 AM.
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
  *
  */
 
@@ -22,19 +19,6 @@ import java.net.URI;
 @Qualifier("responseUtil")
 public class ResponseUtil
 {
-//    protected static final ResponseEntity NO_DATA_TO_PROCESS_RESPONSE = Response.status(Response.Status.BAD_REQUEST)
-//                                                                          .entity(new ErrorResponse(
-//                                                                                  Response.Status.BAD_REQUEST
-//                                                                                          .getStatusCode(),
-//                                                                                  Response.Status.BAD_REQUEST
-//                                                                                          .getReasonPhrase(),
-//                                                                                  "No hay datos que procesar."))
-//                                                                          .build();
-//    protected static final Response NO_CONTENT_RESPONSE = Response.noContent().build();
-//    protected static final Response OK_RESPONSE = Response.ok().build();
-//    protected static final Response UNAUTHORIZED_RESPONSE = Response.status(Response.Status.UNAUTHORIZED).build();
-//    protected static final Response NOT_PRIVILEGES = Response.status(Response.Status.FORBIDDEN).build();
-
     // === 2xx ======
 
     /**

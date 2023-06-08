@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
+ *
+ */
+
 package ABCBankService.com.group.bestvision.yrm.test.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -8,11 +15,10 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @EqualsAndHashCode
@@ -22,9 +28,10 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @Schema(name = "Contact")
-public class ContactDto
+public class ContactDto implements Serializable
 {
-    private long serialVersionUID;
+
+    private static final long serialVersionUID = -5505972669439664181L;
 
     @Schema(name = "id", description = "Id")
     @JsonProperty("id")

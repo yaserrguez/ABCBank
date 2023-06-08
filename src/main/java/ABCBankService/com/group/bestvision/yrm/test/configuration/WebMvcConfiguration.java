@@ -1,10 +1,7 @@
 /*
- * Copyright (c) 2022. DATYS, Tecnología y Servicios.
- * SRNT Sistema de Registro Nacional de Tramites
- * Todos los derechos reservados.
- * www.datys.co.cu
- *
- * LastUpdate: 4/4/22, 3:54 PM.
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
  *
  */
 

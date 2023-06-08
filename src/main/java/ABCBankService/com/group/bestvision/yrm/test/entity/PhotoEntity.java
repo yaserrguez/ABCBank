@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
+ *
+ */
+
 package ABCBankService.com.group.bestvision.yrm.test.entity;
 
 
@@ -20,8 +27,6 @@ public class PhotoEntity implements Serializable
     private static final long serialVersionUID = 34488883266989686L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "ID", nullable = false, updatable = false, columnDefinition = "number(19)")
     private Long id;
 
     @Column(name = "PHOTO", columnDefinition = "blob", length = 4000)

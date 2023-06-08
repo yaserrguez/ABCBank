@@ -1,10 +1,7 @@
 /*
- * Copyright (c) 2022. DATYS, Tecnología y Servicios.
- * SRNT Sistema de Registro Nacional de Tramites
- * Todos los derechos reservados.
- * www.datys.co.cu
- *
- * LastUpdate: 3/29/22, 12:24 PM.
+ * Copyright (c) 2022-2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
+ * LastUpdate: 6/7/23, 9:18 PM
  *
  */
 
@@ -20,7 +17,10 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
