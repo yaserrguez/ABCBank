@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 12:05 AM
+ * LastUpdate: 6/9/23, 8:49 AM
  *
  */
 
@@ -126,9 +126,13 @@ public class ContactControllerImpl extends BaseController implements ContactCont
 
     @Override
     @GetMapping(value = "/in_range_age/{min}/{max}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ContactDto>> getInRangeAge(@PathVariable("min") int min, @PathVariable("max") int mimaxn)
+    public ResponseEntity<List<ContactDto>> getInRangeAge(@PathVariable("min") int min, @PathVariable("max") int max)
     {
-        List<ContactDto> contactList = contactService.findInAgeRange(min, mimaxn);
+        if (min > max)
+        {
+            return preconditionFailedResponse("Rango no valido.");
+        }
+        List<ContactDto> contactList = contactService.findInAgeRange(min, max);
         contactList.forEach(x -> x.addLinks(Boolean.FALSE));
         return okResponse(contactList);
     }
