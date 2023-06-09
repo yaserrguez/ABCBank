@@ -1,6 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
+ * LastUpdate: 6/8/23, 11:44 PM
+ *
+ */
+
+/*
+ * Copyright (c) 2023.  Yaser Rodriguez
+ * yaser.rguez@gmail.com
  * LastUpdate: 6/8/23, 3:03 PM
  *
  */
@@ -12,9 +19,9 @@
  *
  */
 
-insert into T_CONTACT (ID, version, CREATED_DATE, LAST_MODIFIED_DATE, ENABLED, FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH) values (101, 5, '2022-08-28 14:12:27', '2022-08-28 14:12:27', true, 'Udale', 'Phyllys', '2022-08-28 14:12:27');
-insert into T_CONTACT (ID, version, CREATED_DATE, LAST_MODIFIED_DATE, ENABLED, FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH) values (102, 4, '2022-08-28 14:12:27', '2022-08-28 14:12:27', true, 'Madge', 'Dorolisa', '2022-08-28 14:12:27');
-insert into T_CONTACT (ID, version, CREATED_DATE, LAST_MODIFIED_DATE, ENABLED, FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH) values (103, 3, '2022-08-28 14:12:27', '2022-08-28 14:12:27', false, 'Culver', 'Erma', '2022-08-28 14:12:27');
+insert into T_CONTACT (ID, version, CREATED_DATE, LAST_MODIFIED_DATE, ENABLED, FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH) values (101, 5, '2022-08-28 14:12:27', '2022-08-28 14:12:27', true, 'Udale', 'Phyllys', '2020-06-08 14:12:27');
+insert into T_CONTACT (ID, version, CREATED_DATE, LAST_MODIFIED_DATE, ENABLED, FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH) values (102, 4, '2022-08-28 14:12:27', '2022-08-28 14:12:27', true, 'Madge', 'Dorolisa', '2021-06-08 14:12:27');
+insert into T_CONTACT (ID, version, CREATED_DATE, LAST_MODIFIED_DATE, ENABLED, FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH) values (103, 3, '2022-08-28 14:12:27', '2022-08-28 14:12:27', false, 'Culver', 'Erma', '2022-06-08 14:12:27');
 
 insert into T_PHONE (ID, NUMBER, CONTACT_ID) values (100, '511 426 7182', 101);
 insert into T_PHONE (ID, NUMBER, CONTACT_ID) values (101, '511 426 7182', 101);

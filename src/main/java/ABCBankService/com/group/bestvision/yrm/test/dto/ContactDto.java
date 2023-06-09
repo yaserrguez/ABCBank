@@ -1,14 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 3:03 PM
+ * LastUpdate: 6/8/23, 11:44 PM
  *
  */
 
 package ABCBankService.com.group.bestvision.yrm.test.dto;
 
 import ABCBankService.com.group.bestvision.yrm.test.controller.impl.ContactControllerImpl;
-import ABCBankService.com.group.bestvision.yrm.test.entity.AddressEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -72,7 +71,7 @@ public class ContactDto extends EntityModel<ContactDto> implements Serializable
 
     @Schema(name = "addresses", description = "Addresses")
     @JsonProperty("addresses")
-    private List<AddressEntity> addresses = new ArrayList<>();
+    private List<AddressDto> addresses = new ArrayList<>();
 
     @Schema(name = "photo", description = "Photo")
     @JsonProperty("photo")

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 3:03 PM
+ * LastUpdate: 6/8/23, 11:44 PM
  *
  */
 
@@ -122,5 +122,14 @@ public class ContactControllerImpl extends BaseController implements ContactCont
     {
         Optional<List<PhoneDto>> phones = contactService.getPhonesById(id);
         return phones.isPresent() ? okResponse(phones.get()) : noContentResponse();
+    }
+
+    @Override
+    @GetMapping(value = "/in_range_age/{min}/{max}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ContactDto>> getInRangeAge(@PathVariable("min") int min, @PathVariable("max") int mimaxn)
+    {
+        List<ContactDto> contactList = contactService.findInAgeRange(min, mimaxn);
+        contactList.forEach(x -> x.addLinks(Boolean.FALSE));
+        return okResponse(contactList);
     }
 }

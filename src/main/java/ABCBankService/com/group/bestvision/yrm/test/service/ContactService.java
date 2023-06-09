@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 3:03 PM
+ * LastUpdate: 6/8/23, 11:44 PM
  *
  */
 
@@ -30,4 +30,6 @@ public interface ContactService
     Optional<List<AddressDto>> getAddressById(long id);
 
     Optional<List<PhoneDto>> getPhonesById(long id);
+
+    List<ContactDto> findInAgeRange(int minAge, int maxAge);
 }

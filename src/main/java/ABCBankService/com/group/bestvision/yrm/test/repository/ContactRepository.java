@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/7/23, 9:18 PM
+ * LastUpdate: 6/8/23, 11:44 PM
  *
  */
 
@@ -10,10 +10,16 @@ package ABCBankService.com.group.bestvision.yrm.test.repository;
 import ABCBankService.com.group.bestvision.yrm.test.entity.ContactEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 @Repository
 public interface ContactRepository extends JpaRepository<ContactEntity, Long>, JpaSpecificationExecutor<ContactEntity>
 {
-
+    @Query("SELECT c FROM ContactEntity c WHERE c.dateOfBirth BETWEEN :start AND :end")
+    List<ContactEntity> getInRangeDate(@Param("start") Timestamp start, @Param("end") Timestamp end);
 }

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 3:03 PM
+ * LastUpdate: 6/8/23, 11:44 PM
  *
  */
 
@@ -17,6 +17,7 @@ import ABCBankService.com.group.bestvision.yrm.test.mapper.PhotoMapper;
 import ABCBankService.com.group.bestvision.yrm.test.repository.ContactRepository;
 import ABCBankService.com.group.bestvision.yrm.test.service.ContactService;
 import ABCBankService.com.group.bestvision.yrm.test.specification.ContactSpecification;
+import ABCBankService.com.group.bestvision.yrm.test.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
@@ -26,6 +27,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -63,6 +66,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Override
     public List<ContactDto> findAll(ContactSearchFilterDto filter)
     {
         try
@@ -79,6 +83,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Override
     public Page<ContactDto> findAll(ContactSearchFilterDto filter, Pageable pageable)
     {
         try
@@ -96,6 +101,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Override
     public ContactDto save(ContactDto contactDto)
     {
         try
@@ -135,10 +141,13 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Override
     public void deleteById(long id)
     {
         try
         {
+            ContactEntity entity = repository.findById(id)
+                    .orElseThrow(() -> new ResourceNotFoundException(String.format("Contacto con id '%s' no encontrado", id)));
             repository.deleteById(id);
         }
         catch (Exception e)
@@ -198,6 +207,26 @@ public class ContactServiceImpl implements ContactService
             }
             List<PhoneDto> phoneList = contact.getPhones().stream().map(x -> phoneMapper.toDto(x)).collect(Collectors.toList());
             return Optional.of(phoneList);
+        }
+        catch (Exception e)
+        {
+            log.error(e.getMessage());
+            throw e;
+        }
+    }
+
+    @Override
+    public List<ContactDto> findInAgeRange(int minAge, int maxAge)
+    {
+        try
+        {
+            Date now = new Date(System.currentTimeMillis());
+            Date startDate = DateUtils.getBefore(now, maxAge);
+            Date endDate = DateUtils.getBefore(now, minAge);
+
+            List<ContactEntity>  contactList = repository.getInRangeDate(new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()));
+
+            return contactMapper.toDto(contactList);
         }
         catch (Exception e)
         {

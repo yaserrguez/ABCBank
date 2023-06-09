@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/8/23, 3:03 PM
+ * LastUpdate: 6/8/23, 11:44 PM
  *
  */
 
@@ -22,7 +22,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -102,7 +101,7 @@ public interface ContactController
                     @ApiResponse(responseCode = "500", description = "Errores del servidor")
             }
     )
-    ResponseEntity<PhotoDto> getPhoto(@PathVariable("id") long id);
+    ResponseEntity<PhotoDto> getPhoto(long id);
 
     @Operation(description = "Direcciones del Contacto",
             parameters = {
@@ -114,7 +113,7 @@ public interface ContactController
                     @ApiResponse(responseCode = "500", description = "Errores del servidor")
             }
     )
-    ResponseEntity<AddressDto> getAddress(@PathVariable("id") long id);
+    ResponseEntity<AddressDto> getAddress(long id);
 
     @Operation(description = "Telefonos del Contacto",
             parameters = {
@@ -126,5 +125,18 @@ public interface ContactController
                     @ApiResponse(responseCode = "500", description = "Errores del servidor")
             }
     )
-    ResponseEntity<List<PhoneDto>> getPhones(@PathVariable("id") long id);
+    ResponseEntity<List<PhoneDto>> getPhones(long id);
+
+    @Operation(description = "Contactos en rango de edades",
+            parameters = {
+                    @Parameter(name = "min", description = "Edad minima en años"),
+                    @Parameter(name = "max", description = "Edad maxima en años")
+            },
+            responses = {
+                    @ApiResponse(responseCode = "201", description = "La operación se ha realizado con exito",
+                            content = @Content(array = @ArraySchema(schema = @Schema(name = "PhoneDto")))),
+                    @ApiResponse(responseCode = "500", description = "Errores del servidor")
+            }
+    )
+    ResponseEntity<List<ContactDto>> getInRangeAge(int min, int max);
 }
