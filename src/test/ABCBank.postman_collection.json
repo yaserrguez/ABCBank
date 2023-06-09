@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "9140351e-1cf9-4493-b646-a3a8e6b6452b",
+		"name": "ABCBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contact Find All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Find All Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts?name=Udale&address=Brazil",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Udale"
+						},
+						{
+							"key": "address",
+							"value": "Brazil"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Find All Page Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts/page-query?name=Phyllys&address=Brazil",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"page-query"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Phyllys"
+						},
+						{
+							"key": "address",
+							"value": "Brazil"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Find All Page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts/page-query",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"page-query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Find By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts/101",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Delete By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts/101",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact In Range Age",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts/in_range_age/1/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"in_range_age",
+						"1",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Udale\",\r\n    \"secondName\": \"Phyllys\",\r\n    \"dateOfBirth\": \"28/08/2022 14:12:27\",\r\n    \"phones\": [\r\n        {\r\n        \"number\": \"111 426 7182\"\r\n        },\r\n        {\r\n        \"number\": \"222 426 7182\"\r\n        }\r\n    ],\r\n    \"photo\": {\r\n        \"url\": \"'https://robohash.org/utautsunt.png?size=50x50&set=set1'\"\r\n    }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 101,\r\n    \"version\": 5,\r\n    \"firstName\": \"Udale\",\r\n    \"secondName\": \"Phyllys\",\r\n    \"dateOfBirth\": \"28/08/2022 14:12:27\",\r\n    \"phones\": [\r\n        {\r\n            \"id\": 100,\r\n            \"number\": \"511 426 7182\"\r\n        },\r\n        {\r\n            \"id\": 101,\r\n            \"number\": \"511 426 7182\"\r\n        }\r\n    ],\r\n    \"address\": {\r\n        \"id\": 101,\r\n        \"street\": \"Forest\",\r\n        \"houseNumber\": \"38\",\r\n        \"between1\": \"David\",\r\n        \"between2\": \"Golf View\",\r\n        \"town\": \"Taquara\",\r\n        \"district\": \"Gualeguaychú\",\r\n        \"contry\": \"Brazil\"\r\n    },\r\n    \"photo\": {\r\n        \"id\": 101,\r\n        \"url\": \"https://robohash.org/reprehenderitveniamamet.png?size=50x50&set=set1\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8090/abc_bank_service/v1/contacts/101",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/abc_bank_service/v1/contacts/101/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"101",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Photo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/abc_bank_service/v1/contacts/101/photo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"101",
+						"photo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact Phones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/abc_bank_service/v1/contacts/101/phones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"abc_bank_service",
+						"v1",
+						"contacts",
+						"101",
+						"phones"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

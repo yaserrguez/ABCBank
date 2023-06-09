@@ -12,10 +12,10 @@ spring:
   profiles:
     active: test
 
-#  cache:
-#    jcache:
-#      config: classpath:ehcache.xml
-#    ehcache:
-#      config: ehcache.xml
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+    ehcache:
+      config: ehcache.xml
 
 
