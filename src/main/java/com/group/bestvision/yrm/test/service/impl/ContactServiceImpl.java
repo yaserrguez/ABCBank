@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 12:05 AM
+ * LastUpdate: 6/9/23, 12:35 AM
  *
  */
 
@@ -20,6 +20,9 @@ import com.group.bestvision.yrm.test.specification.ContactSpecification;
 import com.group.bestvision.yrm.test.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +42,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @Transactional
+@CacheConfig(cacheNames = "abcbank")
 public class ContactServiceImpl implements ContactService
 {
     private final ContactRepository repository;
@@ -57,6 +61,7 @@ public class ContactServiceImpl implements ContactService
         this.repository = repository;
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#id")
     @Override
     public ContactDto findById(long id)
     {
@@ -74,6 +79,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#filter")
     @Override
     public List<ContactDto> findAll(ContactSearchFilterDto filter)
     {
@@ -91,6 +97,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#filter+#pageable")
     @Override
     public Page<ContactDto> findAll(ContactSearchFilterDto filter, Pageable pageable)
     {
@@ -109,6 +116,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @CacheEvict(value = "abcbank", allEntries = true )
     @Override
     public ContactDto save(ContactDto contactDto)
     {
@@ -130,6 +138,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @CacheEvict(value = "abcbank", allEntries = true )
     @Override
     public ContactDto update(ContactDto contactDto, long id)
     {
@@ -149,6 +158,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @CacheEvict(value = "abcbank", allEntries = true )
     @Override
     public void deleteById(long id)
     {
@@ -165,6 +175,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#id")
     @Override
     public Optional<PhotoDto> getPhotoById(long id)
     {
@@ -184,6 +195,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#id")
     @Override
     public Optional<List<AddressDto>> getAddressById(long id)
     {
@@ -203,6 +215,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#id")
     @Override
     public Optional<List<PhoneDto>> getPhonesById(long id)
     {
@@ -223,6 +236,7 @@ public class ContactServiceImpl implements ContactService
         }
     }
 
+    @Cacheable(key = "'abcbank_'+#root.methodName+#minAge+#maxAge")
     @Override
     public List<ContactDto> findInAgeRange(int minAge, int maxAge)
     {

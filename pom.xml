@@ -2,7 +2,7 @@
 <!--
   ~ Copyright (c) 2023.  Yaser Rodriguez
   ~ yaser.rguez@gmail.com
-  ~ LastUpdate: 6/8/23, 3:03 PM
+  ~ LastUpdate: 6/9/23, 12:35 AM
   ~
   -->
 
@@ -64,6 +64,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${org.springframework.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
             <version>${org.springframework.boot.version}</version>
         </dependency>
 
