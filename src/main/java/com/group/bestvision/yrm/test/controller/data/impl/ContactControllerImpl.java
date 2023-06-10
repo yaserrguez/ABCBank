@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 8:49 AM
+ * LastUpdate: 6/9/23, 9:03 PM
  *
  */
 
-package com.group.bestvision.yrm.test.controller.impl;
+package com.group.bestvision.yrm.test.controller.data.impl;
 
-import com.group.bestvision.yrm.test.controller.ContactController;
+import com.group.bestvision.yrm.test.controller.data.ContactController;
 import com.group.bestvision.yrm.test.dto.*;
 import com.group.bestvision.yrm.test.mapper.ContactMapper;
 import com.group.bestvision.yrm.test.service.impl.ContactServiceImpl;

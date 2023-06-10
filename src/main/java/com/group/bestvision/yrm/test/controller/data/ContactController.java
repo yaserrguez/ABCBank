@@ -1,11 +1,11 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 12:05 AM
+ * LastUpdate: 6/9/23, 9:03 PM
  *
  */
 
-package com.group.bestvision.yrm.test.controller;
+package com.group.bestvision.yrm.test.controller.data;
 
 import com.group.bestvision.yrm.test.dto.AddressDto;
 import com.group.bestvision.yrm.test.dto.ContactDto;

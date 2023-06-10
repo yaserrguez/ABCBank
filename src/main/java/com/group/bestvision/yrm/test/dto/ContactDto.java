@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 12:05 AM
+ * LastUpdate: 6/9/23, 9:03 PM
  *
  */
 
@@ -10,7 +10,7 @@ package com.group.bestvision.yrm.test.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.group.bestvision.yrm.test.controller.impl.ContactControllerImpl;
+import com.group.bestvision.yrm.test.controller.data.impl.ContactControllerImpl;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.springframework.hateoas.EntityModel;
@@ -25,7 +25,9 @@ import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@Data
+//@Data
+@Getter
+@Setter
 @EqualsAndHashCode
 @Builder
 @AllArgsConstructor

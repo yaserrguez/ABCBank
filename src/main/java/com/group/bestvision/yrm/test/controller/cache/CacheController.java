@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 12:35 AM
+ * LastUpdate: 6/9/23, 9:03 PM
  *
  */
 
 package com.group.bestvision.yrm.test.controller.cache;
 
-import com.group.bestvision.yrm.test.controller.impl.BaseController;
+import com.group.bestvision.yrm.test.controller.data.impl.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
