@@ -2,7 +2,7 @@
 <!--
   ~ Copyright (c) 2023.  Yaser Rodriguez
   ~ yaser.rguez@gmail.com
-  ~ LastUpdate: 6/26/23, 12:14 PM
+  ~ LastUpdate: 6/26/23, 1:06 PM
   ~
   -->
 
@@ -203,13 +203,13 @@
                         </exclude>
                     </excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build-info</goal>
-                        </goals>
-                    </execution>
-                </executions>
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>build-info</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
             </plugin>
         </plugins>
     </build>

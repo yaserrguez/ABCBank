@@ -11,7 +11,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: httptrace, "*"
+#        include: httptrace, "*"
+        include: beans, health, info, logfile, loggers, metrics, httptrace, env
   endpoint:
     health:
       show-details: always

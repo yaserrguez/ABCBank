@@ -17,26 +17,3 @@ spring:
       config: classpath:ehcache.xml
     ehcache:
       config: ehcache.xml
-
-logging:
-  file:
-    name: ./ABCBank.log
-  level:
-    root: INFO
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-    logfile:
-      external-file: ./ABCBank.log
-  info:
-    app:
-      name: ABCBank
-      description: This is my first spring boot application whith actuator
-      version: 1.0.0
-
