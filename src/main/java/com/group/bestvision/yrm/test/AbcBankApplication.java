@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023.  Yaser Rodriguez
  * yaser.rguez@gmail.com
- * LastUpdate: 6/9/23, 12:35 AM
+ * LastUpdate: 6/26/23, 12:14 PM
  *
  */
 
@@ -15,10 +15,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class AbcBankApplication
 {
-
     public static void main(String[] args)
     {
         SpringApplication.run(AbcBankApplication.class, args);
     }
-
 }
